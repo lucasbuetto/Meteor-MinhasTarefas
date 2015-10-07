@@ -1,0 +1,26 @@
+<div class="container">
+  <header>
+    
+    <h1>Lista de tarefas</h1>
+    
+    <form class="new-task" ng-submit="addTarefa(novaTarefa); novaTarefa='';">
+        <input type="text" 
+               name="text"
+               ng-model="novaTarefa"
+               placeholder="Adicionar nova tarefa" />
+    </form>
+    
+  </header>
+ 
+  <ul>
+    <li ng-repeat="tarefa in tarefas" ng-class="{'checked': tarefa.checked}">
+      <button class="delete" ng-click="tarefas.remove(tarefa)">&times;</button>
+      <input type="checkbox" ng-model="tarefa.checked" class="toggle-checked" />
+      <span class="text">
+        <strong>{{tarefa.texto}} </strong>
+        <small>({{tarefa.dtaCriacao | date : 'dd/MM/yyyy, HH:mm:ss'}})</small>
+      </span>
+    </li>
+  </ul>
+  
+</div>
